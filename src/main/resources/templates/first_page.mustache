@@ -6,10 +6,15 @@
 <body>
 <h1>Hello</h1>
 
+<form action="/logout" method="post">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+    <input type="submit" value="Sign Out"/>
+</form>
 <div>
-    <form action="/" method="post">
+    <form action="/first_page" method="post">
         <input type="text" name="text" placeholder="Введите текст">
         <input type="text" name="tag" placeholder="Введите таг">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <button type="submit">Добавить запись</button>
     </form>
 </div>
@@ -18,6 +23,7 @@
             <b>{{id}}</b>
             <span>{{text}}</span>
             <i>{{tag}}</i>
+            <strong>{{authorName}}</strong>
         </div>
     {{/messages}}
 </body>
